@@ -27,6 +27,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Support caching with Etags](#support-caching-with-etags)
   *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
   *  [Paginate with ranges](#paginate-with-ranges)
+  *  [Dublin Core](#dublin-core)
 * [Requests](#requests)
   *  [Return appropriate status codes](#return-appropriate-status-codes)
   *  [Provide full resources where available](#provide-full-resources-where-available)
@@ -90,6 +91,10 @@ Use `Content-Range` headers to convey pagination requests. Follow the
 example of the [Heroku Platform API on Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
 for the details of request and response headers, status codes, limits,
 ordering, and page-walking.
+
+#### Dublin Core
+
+Follow [Dublin Core](http://dublincore.org/) whenever it makes sense.
 
 ### Requests
 
