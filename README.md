@@ -136,10 +136,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
 ...
 {
-  "createdAt": "2012-01-01T12:00:00Z",
+  "created": "2012-01-01T12:00:00Z",
   "hostname": "subdomain.example.com",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updatedAt": "2012-01-01T12:00:00Z"
+  "modified": "2012-01-01T12:00:00Z"
 }
 ```
 
@@ -271,14 +271,14 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 
 #### Provide standard timestamps
 
-Provide `createdAt` and `updatedAt` timestamps for resources by default,
+Provide `created` and `modified` timestamps for resources by default,
 e.g:
 
 ```json
 {
   ...
-  "createdAt": "2012-01-01T12:00:00Z",
-  "updatedAt": "2012-01-01T13:00:00Z",
+  "created": "2012-01-01T12:00:00Z",
+  "modified": "2012-01-01T13:00:00Z",
   ...
 }
 ```
@@ -380,15 +380,15 @@ developers, pretty-print JSON responses, e.g.:
   "email": "alice@heroku.com",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "lastLogin": "2012-01-01T12:00:00Z",
-  "createdAt": "2012-01-01T12:00:00Z",
-  "updatedAt": "2012-01-01T12:00:00Z"
+  "created": "2012-01-01T12:00:00Z",
+  "modified": "2012-01-01T12:00:00Z"
 }
 ```
 
 Instead of e.g.:
 
 ```json
-{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","lastLogin":"2012-01-01T12:00:00Z", "createdAt":"2012-01-01T12:00:00Z","updatedAt":"2012-01-01T12:00:00Z"}
+{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","lastLogin":"2012-01-01T12:00:00Z", "created":"2012-01-01T12:00:00Z","modified":"2012-01-01T12:00:00Z"}
 ```
 
 Be sure to include a trailing newline so that the user’s terminal prompt
