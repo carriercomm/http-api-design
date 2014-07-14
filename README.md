@@ -2,6 +2,10 @@
 
 ## Introduction
 
+This is Globo.com's fork of Heroku's HTTP API Design guide. Globo.com's modifications are available on the globocom-master branch.
+
+## Original introduction from Heroku
+
 This guide describes a set of HTTP+JSON API design practices, originally
 extracted from work on the [Heroku Platform API](https://devcenter.heroku.com/articles/platform-api-reference).
 
