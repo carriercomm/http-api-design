@@ -26,7 +26,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Version with Accepts header](#version-with-accepts-header)
   *  [Support caching with Etags](#support-caching-with-etags)
   *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
-  *  [Paginate with ranges](#paginate-with-ranges)
+  *  [Paginate](#paginate-with-ranges)
   *  [Dublin Core](#dublin-core)
 * [Requests](#requests)
   *  [Return appropriate status codes](#return-appropriate-status-codes)
@@ -84,13 +84,9 @@ Include a `Request-Id` header in each API response, populated with a
 UUID value. If both the server and client log these values, it will be
 helpful for tracing and debugging requests.
 
-#### Paginate with Ranges
+#### Paginate
 
-Paginate any responses that are liable to produce large amounts of data.
-Use `Content-Range` headers to convey pagination requests. Follow the
-example of the [Heroku Platform API on Ranges](https://devcenter.heroku.com/articles/platform-api-reference#ranges)
-for the details of request and response headers, status codes, limits,
-ordering, and page-walking.
+Paginate any responses that are liable to produce large amounts of data. Define `previous` and `next` rels in JSON Schema. Use `previousPage` and `nextPage` as JSON Schema parameters for the page. Use `perPage` as JSON Schema parameter for the number of items returned in a page.
 
 #### Dublin Core
 
