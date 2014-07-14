@@ -32,7 +32,8 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Provide full resources where available](#provide-full-resources-where-available)
   *  [Accept serialized JSON in request bodies](#accept-serialized-json-in-request-bodies)
   *  [Use consistent path formats](#use-consistent-path-formats)
-  *  [Downcase paths and attributes](#downcase-paths-and-attributes)
+  *  [Downcase paths](#downcase-paths)
+  *  [Camelcase attributes](#camelcase-attributes)
   *  [Support non-id dereferencing for convenience](#support-non-id-dereferencing-for-convenience)
   *  [Minimize path nesting](#minimize-path-nesting)
 * [Responses](#responses)
@@ -128,17 +129,17 @@ resource on 200 and 201 responses, including `PUT`/`PATCH` and `DELETE`
 requests, e.g.:
 
 ```
-$ curl -X DELETE \  
+$ curl -X DELETE \
   https://service.com/apps/1f9b/domains/0fd4
 
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=utf-8
 ...
 {
-  "created_at": "2012-01-01T12:00:00Z",
+  "createdAt": "2012-01-01T12:00:00Z",
   "hostname": "subdomain.example.com",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
+  "updatedAt": "2012-01-01T12:00:00Z"
 }
 ```
 
@@ -146,7 +147,7 @@ Content-Type: application/json;charset=utf-8
 e.g.:
 
 ```
-$ curl -X DELETE \  
+$ curl -X DELETE \
   https://service.com/apps/1f9b/dynos/05bd
 
 HTTP/1.1 202 Accepted
@@ -196,10 +197,10 @@ them under a standard `actions` prefix, to clearly delineate them:
 e.g.
 
 ```
-/runs/{run_id}/actions/stop
+/runs/{runId}/actions/stop
 ```
 
-#### Downcase paths and attributes
+#### Downcase paths
 
 Use downcased and dash-separated path names, for alignment with
 hostnames, e.g:
@@ -209,11 +210,12 @@ service-api.com/users
 service-api.com/app-setups
 ```
 
-Downcase attributes as well, but use underscore separators so that
-attribute names can be typed without quotes in JavaScript, e.g.:
+#### Camelcase attributes
+
+Camelcase attributes, e.g.:
 
 ```
-service_class: "first"
+serviceClass: "first"
 ```
 
 #### Support non-id dereferencing for convenience
@@ -224,7 +226,7 @@ app name, but that app may be identified by a UUID. In these cases you
 may want to accept both an id or name, e.g.:
 
 ```
-$ curl https://service.com/apps/{app_id_or_name}
+$ curl https://service.com/apps/{appIdOrName}
 $ curl https://service.com/apps/97addcf0-c182
 $ curl https://service.com/apps/www-prod
 ```
@@ -237,7 +239,7 @@ In data models with nested parent/child resource relationships, paths
 may become deeply nested, e.g.:
 
 ```
-/orgs/{org_id}/apps/{app_id}/dynos/{dyno_id}
+/orgs/{orgId}/apps/{appId}/dynos/{dynoId}
 ```
 
 Limit nesting depth by preferring to locate resources at the root
@@ -245,11 +247,11 @@ path. Use nesting to indicate scoped collections. For example, for the
 case above where a dyno belongs to an app belongs to an org:
 
 ```
-/orgs/{org_id}
-/orgs/{org_id}/apps
-/apps/{app_id}
-/apps/{app_id}/dynos
-/dynos/{dyno_id}
+/orgs/{orgId}
+/orgs/{orgId}/apps
+/apps/{appId}
+/apps/{appId}/dynos
+/dynos/{dynoId}
 ```
 
 ### Responses
@@ -269,14 +271,14 @@ Render UUIDs in downcased `8-4-4-4-12` format, e.g.:
 
 #### Provide standard timestamps
 
-Provide `created_at` and `updated_at` timestamps for resources by default,
+Provide `createdAt` and `updatedAt` timestamps for resources by default,
 e.g:
 
 ```json
 {
   ...
-  "created_at": "2012-01-01T12:00:00Z",
-  "updated_at": "2012-01-01T13:00:00Z",
+  "createdAt": "2012-01-01T12:00:00Z",
+  "updatedAt": "2012-01-01T13:00:00Z",
   ...
 }
 ```
@@ -290,7 +292,7 @@ Accept and return times in UTC only. Render times in ISO8601 format,
 e.g.:
 
 ```
-"finished_at": "2012-01-01T12:00:00Z"
+"finishedAt": "2012-01-01T12:00:00Z"
 ```
 
 #### Nest foreign key relations
@@ -312,7 +314,7 @@ Instead of e.g:
 ```json
 {
   "name": "service-production",
-  "owner_id": "5d8201b0...",
+  "ownerId": "5d8201b0...",
   ...
 }
 ```
@@ -377,16 +379,16 @@ developers, pretty-print JSON responses, e.g.:
   "beta": false,
   "email": "alice@heroku.com",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "last_login": "2012-01-01T12:00:00Z",
-  "created_at": "2012-01-01T12:00:00Z",
-  "updated_at": "2012-01-01T12:00:00Z"
+  "lastLogin": "2012-01-01T12:00:00Z",
+  "createdAt": "2012-01-01T12:00:00Z",
+  "updatedAt": "2012-01-01T12:00:00Z"
 }
 ```
 
 Instead of e.g.:
 
 ```json
-{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","last_login":"2012-01-01T12:00:00Z", "created_at":"2012-01-01T12:00:00Z","updated_at":"2012-01-01T12:00:00Z"}
+{"beta":false,"email":"alice@heroku.com","id":"01234567-89ab-cdef-0123-456789abcdef","lastLogin":"2012-01-01T12:00:00Z", "createdAt":"2012-01-01T12:00:00Z","updatedAt":"2012-01-01T12:00:00Z"}
 ```
 
 Be sure to include a trailing newline so that the user’s terminal prompt
