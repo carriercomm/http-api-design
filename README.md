@@ -90,7 +90,19 @@ helpful for tracing and debugging requests.
 
 #### Paginate
 
-Paginate any responses that are liable to produce large amounts of data. Define `previous` and `next` rels in JSON Schema. Use `previousPage` and `nextPage` as JSON Schema parameters for the page. Use `perPage` as JSON Schema parameter for the number of items returned in a page.
+Paginate any responses that are liable to produce large amounts of data.
+
+Define the following rels:
+
+- `previous` - Go to the previous page.
+- `next` - Go to the next page.
+
+Parameters:
+
+- `perPage` - Number of items in a page.
+- `previousPage` - Previous page number. Should be provided by instance response.
+- `nextPage` - Next page number. Should be provided by instance response.
+- `page` - Arbitrary page number. Should be provided by client.
 
 #### Dublin Core
 
