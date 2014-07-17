@@ -97,6 +97,7 @@ Define the following rels:
 
 - `previous` - Go to the previous page.
 - `next` - Go to the next page.
+- `page` - Go to an arbitrary page.
 
 Parameters:
 
