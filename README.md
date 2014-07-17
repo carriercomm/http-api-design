@@ -31,6 +31,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Support caching with Etags](#support-caching-with-etags)
   *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
   *  [Paginate](#paginate)
+  *  [Order collections](#order-collections)
   *  [Dublin Core](#dublin-core)
 * [Requests](#requests)
   *  [Return appropriate status codes](#return-appropriate-status-codes)
@@ -103,6 +104,19 @@ Parameters:
 - `previousPage` - Previous page number. Should be provided by instance response.
 - `nextPage` - Next page number. Should be provided by instance response.
 - `page` - Arbitrary page number. Should be provided by client.
+
+#### Order collections
+
+Provide a sensible default order for collections. Allow clients to specify a different order.
+
+Define the following rel:
+
+- `order` - Return collection in the specified order.
+
+Parameters:
+
+- `orderAttribute` - The attribute to order by.
+- `orderDirection` - The order direction: ASC or DESC.
 
 #### Dublin Core
 
