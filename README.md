@@ -30,7 +30,7 @@ We welcome [contributions](CONTRIBUTING.md) to this guide.
   *  [Version with Accepts header](#version-with-accepts-header)
   *  [Support caching with Etags](#support-caching-with-etags)
   *  [Trace requests with Request-Ids](#trace-requests-with-request-ids)
-  *  [Paginate](#paginate-with-ranges)
+  *  [Paginate](#paginate)
   *  [Dublin Core](#dublin-core)
 * [Requests](#requests)
   *  [Return appropriate status codes](#return-appropriate-status-codes)
